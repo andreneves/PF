@@ -64,3 +64,39 @@ php artisan make:controller NomedoModeloController --resource --model=NomedoMode
 URL do produto
 http://localhost/NomeDoProjeto/public/NomedoModelo
 
+
+
+
+OPERACOES ELOQUENT
+
+        //index / listar
+        $produtos = Produto::orderBy('nome', 'ASC')
+                    ->get();
+        dd($produtos);
+
+
+        //store / salvar
+        $produto = new Produto;
+        $produto->nome  = 'Monitor Ultrawide 36';
+        $produto->valor = 3000;
+        $produto->save();
+
+        dd('Salvou!');
+
+        //show / exibir
+        $produto = Produto::findOrFail(4);
+        dd($produto);
+
+        //update / atualizar
+        $produto = Produto::findOrFail(4);
+        $produto->nome  = 'Super Monitor Ultrawide 36 plus';
+        $produto->valor = 5000;
+        $produto->save();
+
+        // dd('Atualizou!');
+
+        //destroy / excluir
+        $produto = Produto::findOrFail(4);
+        $produto->delete();
+
+        dd('Excluiu!');
